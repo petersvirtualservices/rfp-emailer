@@ -10,10 +10,6 @@ function Home() {
 
   if (error) return <h1> {error.message}</h1>;
 
-  if (data) {
-    console.log(data);
-  }
-
   if(loading) return <h1> Loading...</h1>;
 
   return (
@@ -22,7 +18,7 @@ function Home() {
       <input
         type="text"
         placeholder="INFO"
-        onChange={(event) => {
+        onSubmit={(event) => {
           setINFOSearched(event.target.value);
         }}
       />
@@ -30,9 +26,11 @@ function Home() {
       <div className="INFO">
         {data && (
           <>
+          <ul>
             {data.characters.results.map((info) => (
-              <p> {info.name} </p>
+              <li key={info.id}>{info.name} </li>
             ))} 
+            </ul>
           </>
         )}
       </div>
